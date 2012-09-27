@@ -304,7 +304,8 @@ function plumber_results(array $properties) {
  */
 function plumber_results_clean(&$results) {
   foreach ($results as $key => &$result) {
-    if ($key != '#total') {
+    // Ignore #total key.
+    if (is_numeric($key)) {
       // Rename keys and make file path relative to job root.
       $result['type'] = $result['status'];
       $result['group'] = $result['message_group'];
