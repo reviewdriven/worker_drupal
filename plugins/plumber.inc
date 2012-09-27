@@ -272,9 +272,6 @@ function plumber_results(array $properties) {
         $i++;
       }
 
-      // Clean results for the class.
-      plumber_results_clean($results[$class]);
-
       // Store the number of assertions processed in the loop since the value
       // may be used multiple times.
       $count = count($assertions);
@@ -284,6 +281,9 @@ function plumber_results(array $properties) {
     // there is a possibility for more assertions to exist. This assumes the
     // increment amount is greater then the context.
     while ($count >= PLUMBER_INCREMENT);
+
+    // Clean results for the class.
+    plumber_results_clean($results[$class]);
 
     // Add the number of results for the current class to the total minus one
     // for the #total entry.
