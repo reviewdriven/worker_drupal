@@ -259,7 +259,8 @@ function plumber_results(array $properties) {
           // case the assertion is at the beginning of the list we need to
           // ensure the offset parameter to array_splice() is non-negative.
           $length = $properties['context'] > $i ? $context_length - ($properties['context'] - $i) : $context_length;
-          $results[$class] += array_slice($assertions, max($i - $properties['context'], 0), $length, TRUE);
+          $slice = array_slice($assertions, max($i - $properties['context'], 0), $length, TRUE);
+          $results[$class] = array_merge($results[$class], $slice);
 
           // If the number of relevant assertions has gone over the maximum
           // number allowed then break out of the processing loops.
