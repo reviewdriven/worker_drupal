@@ -183,17 +183,17 @@ function plumber_results(array $properties) {
   $result = $query->execute();
 
   // Map of message type (status) to #total key.
-  $map = array_flip(array('pass', 'fail', 'exception'));
+  $map = array_flip(array('pass', 'fail', 'exception', 'debug'));
 
   // Build an associative array of summaries keyed by the test class and
   // containing the count of each status type found in the results for the test
   // class. Also compile a list of classes that have status types that are
   // found in the 'statues' property.
-  $results = array('#total' => array(0, 0, 0));
+  $results = array('#total' => array(0, 0, 0, 0));
   $classes = array();
   while ($summary = $result->fetchAssoc()) {
     if (empty($results[$summary['test_class']])) {
-      $results[$summary['test_class']]['#total'] = array(0, 0, 0);
+      $results[$summary['test_class']]['#total'] = array(0, 0, 0, 0);
     }
     $type = $map[$summary['status']];
     $results['#total'][$type] += $summary['count'];
