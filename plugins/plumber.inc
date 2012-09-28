@@ -264,7 +264,7 @@ function plumber_results(array $properties) {
 
           // If the number of relevant assertions has gone over the maximum
           // number allowed then break out of the processing loops.
-          if ($total + count($results[$class]) >= PLUMBER_MAX) {
+          if ($total + count($results[$class]) - 1 >= PLUMBER_MAX) {
             worker_log('Reached maximum number (' . number_format(PLUMBER_MAX) . ') of assertions.');
             break 3;
           }
