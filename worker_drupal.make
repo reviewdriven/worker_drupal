@@ -13,4 +13,5 @@ projects[coder] = 1
 
 projects[worker][type] = module
 projects[worker][download][type] = git
-projects[worker][download][url] = git@git.boombatower.com:reviewdriven/modules/worker
+projects[worker][download][url] = http://git.drupal.org/project/worker.git
+projects[worker][download][branch] = 7.x-1.x
